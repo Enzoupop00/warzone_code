@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadeaux CoD</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('https://store-images.s-microsoft.com/image/apps.5449.14207097610490811.5b338e31-5c12-4d95-9a2a-2f16ceb01377.54d31648-9587-49a6-b312-7df6ce023530?h=862&format=jpg');
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+      text-shadow: 1px 1px 2px black;
+    }
+
+    input, button {
+      font-size: 18px;
+      padding: 10px 20px;
+      margin-top: 15px;
+      border-radius: 10px;
+      border: none;
+    }
+
+    #giftBtn {
+      display: none;
+      background-color: #00ff44;
+      color: vert;
+      cursor: pointer;
+    }
+
+    #message {
+      margin-top: 20px;
+      font-size: 24px;
+      display: none;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="codeInput" placeholder="Entrez le code secret">
+  <button id="giftBtn">🎁 Télécharger le cadeau</button>
+  <div id="message">Code accepté !</div>
+
+  <script>
+    const validCode = "1r5q-95Tz-4567-8910";
+    const codeInput = document.getElementById("codeInput");
+    const giftBtn = document.getElementById("giftBtn");
+    const message = document.getElementById("message");
+
+    codeInput.addEventListener("input", () => {
+      if (codeInput.value === validCode) {
+        giftBtn.style.display = "inline-block";
+        message.style.display = "block";
+      } else {
+        giftBtn.style.display = "none";
+        message.style.display = "none";
+      }
+    });
+
+    giftBtn.addEventListener("click", () => {
+      const link = document.createElement("a");
+      link.href = "cadeaux.zip"; // Le fichier doit être dans le même dossier que index.html
+      link.download = "cadeaux_cod.zip";
+      link.click();
+    });
+  </script>
+</body>
+</html>
